@@ -1,0 +1,62 @@
+@startuml
+
+class models.Elector{
+	String DNI
+	String name
+	String lastname
+	String gender
+	String suitable
+}
+
+class models.Candidate{
+	String DNI
+	String name
+	String lastname
+	int number
+}
+
+class models.Cabin{
+    String location
+	String code
+	String dniElector
+}	
+
+class models.Vote{
+	String numberCandidate
+	String codeCabin
+	Date date
+	time time
+}
+
+models.Elector "1" --> "*" models.Cabin
+models.Elector "1" --> "1" models.Vote
+
+models.Candidate "1" --o "*" models.Vote
+
+models.Cabin "1" --> "*" models.Vote
+
+
+Class controllers.ElectorController{
+	list()
+	store()
+	delete()
+}
+
+Class controllers.CandidateController{
+	list()
+	store()
+	delete()
+}
+
+Class controllers.CabinController{
+	list()
+	store()
+	delete()
+}
+
+Class controllers.VoteController{
+	list()
+	store()
+}
+
+@enduml
